@@ -101,7 +101,8 @@ This is a web-based solar panel shadow calculator built with Flask that helps us
 ```
 
 ## Changelog
-- July 07, 2025. Initial setup
+- July 07, 2025. Initial setup and conversion from tkinter to Flask web application
+- July 07, 2025. Successfully deployed Flask web application with full functionality
 
 ## User Preferences
 
