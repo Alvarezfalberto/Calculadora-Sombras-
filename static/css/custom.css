@@ -1,0 +1,188 @@
+/* Custom styles for Solar Panel Calculator */
+
+:root {
+    --solar-primary: #007bff;
+    --solar-secondary: #6c757d;
+    --solar-success: #28a745;
+    --solar-warning: #ffc107;
+    --solar-danger: #dc3545;
+    --solar-info: #17a2b8;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-control {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--solar-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+    background: var(--solar-primary);
+    border-color: var(--solar-primary);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+    border-color: #004085;
+    transform: translateY(-1px);
+}
+
+.bg-info.bg-opacity-10 {
+    background-color: rgba(23, 162, 184, 0.1) !important;
+    border-left: 4px solid var(--solar-info);
+}
+
+.bg-warning.bg-opacity-10 {
+    background-color: rgba(255, 193, 7, 0.1) !important;
+    border-left: 4px solid var(--solar-warning);
+}
+
+.bg-danger.bg-opacity-10 {
+    background-color: rgba(220, 53, 69, 0.1) !important;
+    border-left: 4px solid var(--solar-danger);
+}
+
+.bg-success.bg-opacity-10 {
+    background-color: rgba(40, 167, 69, 0.1) !important;
+    border-left: 4px solid var(--solar-success);
+}
+
+.display-4 {
+    font-weight: 300;
+    color: #ffffff;
+}
+
+.lead {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #f8d7da;
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #d4edda;
+}
+
+/* Icon styling */
+.feather {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+}
+
+/* Form validation styling */
+.form-control:invalid {
+    border-color: var(--solar-danger);
+}
+
+.form-control:valid {
+    border-color: var(--solar-success);
+}
+
+/* Loading animation */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .h4 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Image styling */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Animation for results */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card.result-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Text styling */
+.text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Form text styling */
+.form-text {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.875rem;
+}
