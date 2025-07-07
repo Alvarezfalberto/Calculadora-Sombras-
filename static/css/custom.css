@@ -186,3 +186,85 @@ body {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.875rem;
 }
+
+/* City search dropdown */
+#cityResults {
+    background: rgba(33, 37, 41, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#cityResults.show {
+    display: block !important;
+}
+
+#cityResults .dropdown-item {
+    color: rgba(255, 255, 255, 0.9);
+    background: transparent;
+    border: none;
+    padding: 10px 15px;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#cityResults .dropdown-item:hover,
+#cityResults .dropdown-item:focus {
+    background: rgba(0, 123, 255, 0.2);
+    color: white;
+    transform: translateX(2px);
+}
+
+#cityResults .dropdown-item-text {
+    padding: 10px 15px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* Input group styling for city search */
+.input-group .btn-outline-secondary {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-group .btn-outline-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* Position dropdown relative to input group */
+.input-group + #cityResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 2px;
+}
+
+/* Make sure dropdown container has relative positioning */
+.mb-3 {
+    position: relative;
+}
+
+/* Smooth animations for dropdown */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#cityResults.show {
+    animation: fadeInDown 0.2s ease-out;
+}

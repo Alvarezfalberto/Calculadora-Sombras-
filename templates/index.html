@@ -20,9 +20,6 @@
                 <p class="lead text-muted">
                     Calcula la distancia óptima entre filas de paneles solares para minimizar el sombreado
                 </p>
-                <p class="text-muted small">
-                    Creado por <strong>Alberto Álvarez Fernández</strong>
-                </p>
             </div>
         </div>
 
@@ -56,17 +53,28 @@
                                     <i data-feather="map-pin" class="me-1"></i>
                                     Latitud (°)
                                 </label>
+                                <div class="input-group">
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="citySearch" 
+                                           placeholder="Buscar ciudad o introducir coordenadas"
+                                           autocomplete="off">
+                                    <button class="btn btn-outline-secondary" type="button" id="searchBtn">
+                                        <i data-feather="search"></i>
+                                    </button>
+                                </div>
+                                <div id="cityResults" class="dropdown-menu w-100" style="max-height: 200px; overflow-y: auto;"></div>
                                 <input type="number" 
-                                       class="form-control" 
+                                       class="form-control mt-2" 
                                        id="latitude" 
                                        name="latitude" 
                                        step="0.001" 
                                        min="-90" 
                                        max="90" 
                                        value="{{ results.inputs.latitude if results else '' }}"
-                                       placeholder="Ej: 40.416"
+                                       placeholder="Ej: 40.416 (Madrid)"
                                        required>
-                                <div class="form-text">Rango: -90° a 90°</div>
+                                <div class="form-text">Rango: -90° a 90° o busca tu ciudad arriba</div>
                             </div>
 
                             <div class="mb-3">
