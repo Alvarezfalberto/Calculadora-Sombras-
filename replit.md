@@ -107,3 +107,7 @@ This is a web-based solar panel shadow calculator built with Flask that helps us
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+
+## Author Information
+
+Created by: Alberto Álvarez Fernández
