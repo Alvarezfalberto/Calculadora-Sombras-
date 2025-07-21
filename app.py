@@ -7,7 +7,7 @@ import numpy as np
 import streamlit as st
 
 # --- ESTILOS PERSONALIZADOS ---
-st.set_page_config(page_title="Calculadora de Sombras", layout="centered")
+st.set_page_config(page_title="Calculadora de Distancia Mínima entre Paneles Solares", layout="centered")
 
 st.markdown(
     """
@@ -41,12 +41,31 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("<h1 style='text-align: center; color: #FFD600;'>☀️ Calculadora de Distancia Mínima entre Paneles Solares ☀️</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #FFD600;'>Calculadora de Distancia Mínima entre Paneles Solares</h1>", unsafe_allow_html=True)
+
 st.markdown(
-    "<p style='text-align: center; font-size: 1.1rem; color: #FFD600;'>"
-    "Optimiza tu instalación fotovoltaica evitando sombras y maximizando la eficiencia. "
-    "Ingresa los datos y obtén el diagrama visual de la disposición recomendada. 🌞"
-    "</p>", unsafe_allow_html=True
+    """
+    <div style="background-color:#393e46; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.2rem;">
+    <h2 style="color:#FFD600">Instrucciones</h2>
+    <p><b>¿Qué hace esta calculadora?</b></p>
+    <p>Esta herramienta calcula la distancia óptima entre filas de paneles solares para minimizar el sombreado durante el solsticio de invierno (21 de diciembre).</p>
+    <b>Parámetros requeridos:</b>
+    <ul>
+        <li><b>Latitud:</b> Ubicación geográfica en grados</li>
+        <li><b>Inclinación:</b> Ángulo de inclinación de los paneles</li>
+        <li><b>Longitud:</b> Longitud física del panel solar</li>
+    </ul>
+    <b>Resultados obtenidos:</b>
+    <ul>
+        <li><b>Declinación Solar:</b> Ángulo del sol respecto al ecuador</li>
+        <li><b>Altura Solar:</b> Ángulo del sol a mediodía</li>
+        <li><b>Distancia Mínima:</b> Separación mínima sin sombreado</li>
+        <li><b>Distancia Recomendada:</b> Separación con margen de seguridad</li>
+    </ul>
+    <b>Consejo:</b> Use la distancia recomendada para tener un margen de seguridad adicional.
+    </div>
+    """,
+    unsafe_allow_html=True
 )
 
 # --- LÓGICA DEL CÓDIGO ---
