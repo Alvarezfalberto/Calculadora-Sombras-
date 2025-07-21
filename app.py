@@ -1,23 +1,49 @@
-‎
+import math
+import logging
+from io import BytesIO
+import base64
+import matplotlib.pyplot as plt
+import numpy as np
 import streamlit as st
 
 # --- ESTILOS PERSONALIZADOS ---
-st.set_page_config(page_title="Calculadora de Sombras", layout="centered")
 st.set_page_config(page_title="Calculadora de Distancia Mínima entre Paneles Solares", layout="centered")
 
 st.markdown(
     """
-@@ -41,117 +41,136 @@
+    <style>
+        .main {
+            background-color: #222831;
+            color: #EEEEEE;
+        }
+        .block-container {
+            padding-top: 2rem;
+        }
+        .stButton>button {
+            color: white;
+            background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .stNumberInput>div>input {
+            background: #393e46;
+            color: #FFF;
+        }
+        .stForm {
+            background-color: #393e46;
+            border-radius: 12px;
+            padding: 2rem 1rem 1rem 1rem;
+        }
+    </style>
+    """,
     unsafe_allow_html=True
 )
 
-st.markdown("<h1 style='text-align: center; color: #FFD600;'>☀️ Calculadora de Distancia Mínima entre Paneles Solares ☀️</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align: center; color: #FFD600;'>Calculadora de Distancia Mínima entre Paneles Solares</h1>", unsafe_allow_html=True)
+
 st.markdown(
-    "<p style='text-align: center; font-size: 1.1rem; color: #FFD600;'>"
-    "Optimiza tu instalación fotovoltaica evitando sombras y maximizando la eficiencia. "
-    "Ingresa los datos y obtén el diagrama visual de la disposición recomendada. 🌞"
-    "</p>", unsafe_allow_html=True
     """
     <div style="background-color:#393e46; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.2rem;">
     <h2 style="color:#FFD600">Instrucciones</h2>
@@ -148,3 +174,4 @@ if submit_btn:
                 st.error("No se pudo generar el diagrama.")
     except Exception as e:
         st.error("Error en el cálculo. Por favor, verifique los valores ingresados.")
+        logging.error(f"Error in calculation: {str(e)}")
