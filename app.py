@@ -36,33 +36,43 @@ st.markdown(
             border-radius: 12px;
             padding: 2rem 1rem 1rem 1rem;
         }
+        /* Quita el espacio superior entre inputs y labels */
+        label {
+            margin-bottom: 0.2rem;
+            margin-top: 0.5rem;
+        }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.markdown("<h1 style='text-align: center; color: #FFD600;'>Calculadora de Distancia Mínima entre Paneles Solares</h1>", unsafe_allow_html=True)
+# Título principal
+st.markdown(
+    "<h1 style='text-align: center; color: #67c1d3;'>Calculadora de Distancia Mínima entre Paneles Solares</h1>",
+    unsafe_allow_html=True
+)
 
+# Instrucciones destacadas
 st.markdown(
     """
     <div style="background-color:#393e46; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.2rem;">
-    <h2 style="color:#FFD600">Instrucciones</h2>
-    <p><b>¿Qué hace esta calculadora?</b></p>
-    <p>Esta herramienta calcula la distancia óptima entre filas de paneles solares para minimizar el sombreado durante el solsticio de invierno (21 de diciembre).</p>
-    <b>Parámetros requeridos:</b>
-    <ul>
-        <li><b>Latitud:</b> Ubicación geográfica en grados</li>
-        <li><b>Inclinación:</b> Ángulo de inclinación de los paneles</li>
-        <li><b>Longitud:</b> Longitud física del panel solar</li>
-    </ul>
-    <b>Resultados obtenidos:</b>
-    <ul>
-        <li><b>Declinación Solar:</b> Ángulo del sol respecto al ecuador</li>
-        <li><b>Altura Solar:</b> Ángulo del sol a mediodía</li>
-        <li><b>Distancia Mínima:</b> Separación mínima sin sombreado</li>
-        <li><b>Distancia Recomendada:</b> Separación con margen de seguridad</li>
-    </ul>
-    <b>Consejo:</b> Use la distancia recomendada para tener un margen de seguridad adicional.
+        <h2 style="color:#ece75b">Instrucciones</h2>
+        <p><b>¿Qué hace esta calculadora?</b></p>
+        <p>Esta herramienta calcula la distancia óptima entre filas de paneles solares para minimizar el sombreado durante el solsticio de invierno (21 de diciembre).</p>
+        <b>Parámetros requeridos:</b>
+        <ul>
+            <li><b style="color:#ece75b">Latitud:</b> Ubicación geográfica en grados</li>
+            <li><b style="color:#67c1d3">Inclinación:</b> Ángulo de inclinación de los paneles</li>
+            <li><b style="color:#26a484">Longitud:</b> Longitud física del panel solar</li>
+        </ul>
+        <b>Resultados obtenidos:</b>
+        <ul>
+            <li><b>Declinación Solar:</b> Ángulo del sol respecto al ecuador</li>
+            <li><b>Altura Solar:</b> Ángulo del sol a mediodía</li>
+            <li><b>Distancia Mínima:</b> Separación mínima sin sombreado</li>
+            <li><b>Distancia Recomendada:</b> Separación con margen de seguridad</li>
+        </ul>
+        <b>Consejo:</b> Use la distancia recomendada para tener un margen de seguridad adicional.
     </div>
     """,
     unsafe_allow_html=True
@@ -144,9 +154,12 @@ def generate_panel_diagram(tilt, length, dmin, drec, lat):
 
 # --- INTERFAZ STREAMLIT ---
 with st.form(key='form_sombras'):
-    lat = st.number_input('Latitud (°)', min_value=-90.0, max_value=90.0, value=20.0, step=0.1, format="%.3f")
-    tilt = st.number_input('Inclinación del panel (°)', min_value=0.0, max_value=90.0, value=20.0, step=0.1, format="%.3f")
-    length = st.number_input('Longitud del panel (m)', min_value=0.01, value=1.7, step=0.01, format="%.3f")
+    st.markdown("<label style='color:#ece75b; font-size:16px; font-weight:bold;'>Latitud (°)</label>", unsafe_allow_html=True)
+    lat = st.number_input('', min_value=-90.0, max_value=90.0, value=20.0, step=0.1, format="%.3f")
+    st.markdown("<label style='color:#67c1d3; font-size:16px; font-weight:bold;'>Inclinación del panel (°)</label>", unsafe_allow_html=True)
+    tilt = st.number_input('', min_value=0.0, max_value=90.0, value=20.0, step=0.1, format="%.3f")
+    st.markdown("<label style='color:#26a484; font-size:16px; font-weight:bold;'>Longitud del panel (m)</label>", unsafe_allow_html=True)
+    length = st.number_input('', min_value=0.01, value=1.7, step=0.01, format="%.3f")
     submit_btn = st.form_submit_button('Calcular')
 
 if submit_btn:
