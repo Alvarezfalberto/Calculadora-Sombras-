@@ -173,13 +173,15 @@ if submit_btn:
             dmin_rounded = round(dmin, 3)
             drec_rounded = round(dmin * 1.25, 3)
 
-            st.subheader('Resultados')
+            # Resultados en azul
+            st.markdown("<h3 style='color:#67c1d3;'>Resultados</h3>", unsafe_allow_html=True)
             st.write(f"**Declinación solar (delta):** {delta_rounded}°")
             st.write(f"**Altura solar al mediodía (ho):** {ho_rounded}°")
             st.write(f"**Distancia mínima entre filas (dmin):** {dmin_rounded} m")
             st.write(f"**Distancia recomendada (drec):** {drec_rounded} m")
 
-            st.subheader('Diagrama')
+            # Diagrama en verde
+            st.markdown("<h3 style='color:#26a484;'>Diagrama</h3>", unsafe_allow_html=True)
             img_buffer = generate_panel_diagram(tilt, length, dmin_rounded, drec_rounded, lat)
             if img_buffer:
                 st.image(img_buffer, use_container_width=True)
