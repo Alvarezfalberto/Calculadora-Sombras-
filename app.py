@@ -6,7 +6,50 @@ import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 
-# Configure logging
+# --- ESTILOS PERSONALIZADOS ---
+st.set_page_config(page_title="Calculadora de Sombras", layout="centered")
+
+st.markdown(
+    """
+    <style>
+        .main {
+            background-color: #222831;
+            color: #EEEEEE;
+        }
+        .block-container {
+            padding-top: 2rem;
+        }
+        .stButton>button {
+            color: white;
+            background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .stNumberInput>div>input {
+            background: #393e46;
+            color: #FFF;
+        }
+        .stForm {
+            background-color: #393e46;
+            border-radius: 12px;
+            padding: 2rem 1rem 1rem 1rem;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("<h1 style='text-align: center; color: #FFD600;'>☀️ Calculadora de Distancia Mínima entre Paneles Solares ☀️</h1>", unsafe_allow_html=True)
+st.markdown(
+    "<p style='text-align: center; font-size: 1.1rem; color: #FFD600;'>"
+    "Optimiza tu instalación fotovoltaica evitando sombras y maximizando la eficiencia. "
+    "Ingresa los datos y obtén el diagrama visual de la disposición recomendada. 🌞"
+    "</p>", unsafe_allow_html=True
+)
+
+# --- LÓGICA DEL CÓDIGO ---
 logging.basicConfig(level=logging.DEBUG)
 
 def calc_shadow_spacing(lat, tilt, length):
@@ -80,10 +123,7 @@ def generate_panel_diagram(tilt, length, dmin, drec, lat):
         logging.error(f"Error generating diagram: {str(e)}")
         return None
 
-# Interfaz de Streamlit
-st.set_page_config(page_title="Calculadora de Sombras", layout="centered")
-st.title("Calculadora de Distancia Mínima entre Paneles Solares")
-
+# --- INTERFAZ STREAMLIT ---
 with st.form(key='form_sombras'):
     lat = st.number_input('Latitud (°)', min_value=-90.0, max_value=90.0, value=20.0, step=0.1, format="%.3f")
     tilt = st.number_input('Inclinación del panel (°)', min_value=0.0, max_value=90.0, value=20.0, step=0.1, format="%.3f")
@@ -110,7 +150,7 @@ if submit_btn:
             st.subheader('Diagrama')
             img_buffer = generate_panel_diagram(tilt, length, dmin_rounded, drec_rounded, lat)
             if img_buffer:
-                st.image(img_buffer, use_column_width=True)
+                st.image(img_buffer, use_container_width=True)
             else:
                 st.error("No se pudo generar el diagrama.")
     except Exception as e:
